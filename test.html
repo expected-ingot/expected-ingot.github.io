@@ -3,5 +3,5 @@
 document.body.innerHTML = "";
 var newWindow = window.open("https://chomikuj.pl", '_blank');
 newWindow.focus();
-console.log(newWindow);
+newWindow.addEventListener("load", newWindow.alert("hi"));
 </script>
