@@ -1,5 +1,95 @@
-<html>
-  <body>
-    <h1>?</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>crapbass</title>
+</head>
+
+<body>
+  <div id="contentContent" style="display: flex; justify-content: center;" width="100%">
+    <div id="content">
+      <img src="crapbass.png" />
+      <br>
+      <div id="info">
+        <a onclick="doSmoothClick(this)" id="smoothA" data-href="#info">info</a>
+        <br>
+        <h1>hey! i'm crapbass!</h1>
+        <p>* i'm from poland</p>
+        <p>* favourite bands: tally hall, ミラクルミュージカル, blink-182, strachy na lachy, most polish bands :P</p>
+        <p>* interests: programming</p>
+        <p>* contact: @crapbass on Discord</p>
+      </div>
+    </div>
+  </div>
+</body>
+<style>
+  @font-face {
+    font-family: "Google Sans";
+    src: url(GoogleSans-Regular.woff);
+  }
+
+  * {
+    font-family: "Google Sans";
+    color: white;
+  }
+
+  body {
+    background-color: black;
+  }
+
+  input, textarea {
+    background-color: rgb(48, 49, 43);
+    color: white;
+    border: none;
+  }
+
+  a:hover {
+    text-transform: uppercase;
+  }
+
+  a {
+    color: rgb(10, 59, 184);
+  }
+
+  #content {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  #contentContent {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+<script>
+
+  const smoothA = document.getElementById("smoothA");
+  const doSmoothClick = (element) => {
+    //document.body.style.opacity = 0;
+    //setTimeout(() => {
+    window.location.href += element.getAttribute("data-href")
+    //}, 200);
+  }
+  /*
+  const links = document.getElementsByTagName('a')
+  function getRandomRgb() {
+    var num = Math.round(0xffffff * Math.random());
+    var r = num >> 16;
+    var g = num >> 8 & 255;
+    var b = num & 255;
+    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+  }
+  for (let link of links) {
+      link.style.color = getRandomRgb();
+  }
+  */
+</script>
+
 </html>
