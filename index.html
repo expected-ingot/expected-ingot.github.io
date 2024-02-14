@@ -25,7 +25,10 @@
         <br>
         <br>
         <br>
-        <img src="about.gif">
+        <div>
+          <img src="textbox0.png" id="textbox">
+          <button style="width: 100%;" id="skip">SKIP</button>
+        </div>
       </div>
     </div>
   </div>
@@ -34,6 +37,11 @@
   @font-face {
     font-family: "Google Sans";
     src: url(GoogleSans-Regular.woff);
+  }
+  
+  @font-face {
+    font-family: "Determination Mono Web";
+    src: url(DeterminationMono-Regular.woff);
   }
 
   * {
@@ -45,7 +53,14 @@
     background-color: black;
   }
 
-  input, textarea {
+  button {
+    background-color: black;
+    color: white;
+    font-family: "Determination Mono Web";
+  }
+
+  input,
+  textarea {
     background-color: rgb(48, 49, 43);
     color: white;
     border: none;
@@ -75,14 +90,50 @@
   }
 </style>
 <script>
-
   const smoothA = document.getElementById("smoothA");
   const doSmoothClick = (element) => {
     //document.body.style.opacity = 0;
     //setTimeout(() => {
-    window.location.href += element.getAttribute("data-href")
+    window.location.href += element.getAttribute("data-href");
     //}, 200);
   }
+  let currentTextboxFrame = -1;
+  let textbox = document.getElementById("textbox");
+  function changeTextboxFrame(frame, type) {
+    textbox.src = "textbox" + frame + "." + type;
+  }
+
+  let textboxSwitchTimeout = setTimeout(handleTextbox, 1000);
+
+  function handleTextbox() {
+    currentTextboxFrame += 1;
+    if (currentTextboxFrame >= 4) {
+      currentTextboxFrame = 0;
+    }
+    changeTextboxFrame(currentTextboxFrame, "gif");
+    handleTextboxTimeout();
+  }
+
+  function handleTextboxTimeout() {
+    clearTimeout(textboxSwitchTimeout);
+    if (currentTextboxFrame != 3) {
+      textboxSwitchTimeout = setTimeout(handleTextbox, 4000);
+    } else {
+      textboxSwitchTimeout = setTimeout(handleTextbox, 3000);
+    }
+  }
+
+
+  function restartGif() {
+    if (textbox) {
+      var imgSrc = textbox.src;
+      textbox.src = imgSrc;
+      handleTextboxTimeout();
+    }
+  }
+  document.getElementById("textbox").addEventListener("click", restartGif);
+  document.getElementById("skip").addEventListener("click", handleTextbox);
+
   /*
   const links = document.getElementsByTagName('a')
   function getRandomRgb() {
